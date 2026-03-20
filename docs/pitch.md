@@ -6,21 +6,19 @@
 
 ## Pitch Final
 
-Un periodista en Venezuela tiene sus ahorros congelados. Una seed phrase de 12 palabras es todo lo que está entre él y su dinero. Y la perdió.
+Un periodista en Venezuela tiene sus ahorros perdidos. Una seed phrase de 12 palabras es todo lo que está entre él y su dinero. Y no puede acceder a ella.
 
-Esto pasa todos los días. No importa qué tan buena sea la tecnología. Si lo primero que le pones enfrente a alguien es una seed phrase, ya lo perdiste.
+Si lo primero que le pones enfrente a alguien es una seed phrase, ya lo perdiste.
 
-Lo que ven aquí es lo que construimos. Un botón. "Continuar con Google." Lo presionas — y tienes una wallet de Stellar. Sin seed phrases. Sin gas fees. Sin entender nada de crypto.
+Lo que ven aquí es lo que construimos. Un botón para acceder: "Continuar con Google." Lo presionas y se te crea una cuenta con una wallet de Stellar. Sin entender nada de crypto.
 
-Por debajo es Stellar-native. SEP-10, SEP-30, llaves fragmentadas con Shamir en TEE. El usuario nunca toca una llave privada — pero nunca pierde control de su cuenta.
+Por debajo usamos Stellar-native. SEP-10, SEP-30, llaves fragmentadas con Shamir en TEE. De tal forma que el usuario nunca toca una llave privada pero nunca pierde control de su cuenta.
 
 **Accesly hace dos cosas.**
 
-**Uno: para usuarios.** Login con Google, wallet instantánea. Esto ya funciona. Lo pueden probar hoy.
+**Uno: para usuarios.** Login con Google. Esto ya funciona. Lo pueden probar hoy.
 
-**Dos: para AI Agents.** 2026 es el año de los agentes. Están aprendiendo a navegar, a comprar, a mover dinero. Pero necesitan infraestructura financiera. Wallets. Nosotros se las damos. Entras con tu correo y tienes un agente con su propia wallet en Stellar. Zero setup. Zero code.
-
-Thirdweb acaba de pivotar a infraestructura para agentes. Pero no soportan Stellar. Nosotros sí. Y estamos aquí primero.
+**Dos: para AI Agents.** 2026 es el año de los agentes. Están aprendiendo a comprar, a mover dinero. Pero necesitan wallets. Entras a Accesly con tu correo y tienes un agente con su propia wallet en Stellar. No code, just ship.
 
 **Somos tres.** Yo soy Vianey, vengo de estrategia de producto en Deloitte y Unilever. Daniel es especialista en ciberseguridad — pentesting, hacking ético, threat modeling — viene de Deloitte y hoy trabaja en seguridad del Poder Judicial federal.
 
@@ -38,9 +36,15 @@ Porque ese periodista no necesita entender blockchain. Solo necesita acceder a s
 
 ---
 
-## Versión Corta (30 segundos)
+## Versión Corta (60 segundos)
 
-> "Accesly hace dos cosas. Uno: entras con tu correo y tienes un agente con wallet en Stellar. Dos: si eres developer, integras eso en tu app con 3 líneas. Un producto para usuarios, un SDK para escalar. Thirdweb pivoteó a AI Agents pero no soporta Stellar. Nosotros sí."
+> Un periodista en Venezuela no puede acceder a sus ahorros porque perdió una seed phrase. Eso no debería pasar.
+>
+> Accesly: login con Google, wallet en Stellar, sin seed phrases. Para humanos y para agentes.
+>
+> El SDK está en npm, cinco equipos ya lo integran. Buscamos proyectos en Stellar que necesiten onboarding sin fricción.
+>
+> Somos Accesly.
 
 ---
 
