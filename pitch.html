@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesly - Pitch</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        .slide {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            padding: 60px 80px;
+            position: relative;
+        }
+        
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #667eea;
+        }
+        
+        p, li {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+        
+        ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        li {
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+        }
+        
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+        
+        .highlight {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .big-quote {
+            font-size: 2.5rem;
+            font-style: italic;
+            color: #999;
+            border-left: 4px solid #667eea;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        
+        .team-member h3 {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .team-member p {
+            font-size: 1.2rem;
+            color: #aaa;
+        }
+        
+        .tech-box {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 12px;
+            padding: 25px 35px;
+            display: inline-block;
+            margin: 10px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 1rem;
+            color: #555;
+        }
+        
+        .logo {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .center-slide {
+            text-align: center;
+            align-items: center;
+        }
+        
+        .center-slide h1 {
+            font-size: 5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #888;
+            margin-top: 20px;
+        }
+        
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 30px;
+        }
+        
+        .roadmap-item {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .roadmap-item h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .roadmap-item p {
+            font-size: 1.3rem;
+        }
+        
+        .nav-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: #444;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .cta-box p {
+            color: #fff;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide active center-slide">
+        <h1>Accesly</h1>
+        <p class="subtitle">Wallet infrastructure for humans & AI Agents on Stellar</p>
+        <p style="margin-top: 60px; color: #666;">Stellar Growth Lab Hackathon 2026</p>
+        <div class="nav-hint">← → para navegar</div>
+    </div>
+
+    <!-- Slide 2: Problem -->
+    <div class="slide">
+        <span class="logo">Accesly</span>
+        <h2>El Problema</h2>
+        <p class="big-quote">"Un periodista en Venezuela tiene sus ahorros perdidos. Una seed phrase de 12 palabras es todo lo que está entre él y su dinero. Y no puede acceder a ella."</p>
+        <p style="margin-top: 40px; font-size: 2rem;">Si lo primero que le pones enfrente a alguien es una <span class="highlight">seed phrase</span>, ya lo perdiste.</p>
+        <span class="slide-number">1 / 9</span>
+    </div>
+
+    <!-- Slide 3: Product -->
+    <div class="slide">
+        <span class="logo">Accesly</span>
+        <h2>El Producto</h2>
+        <p>Un botón: <span class="highlight">"Continuar con Google"</span></p>
+        <p style="margin-top: 20px;">Lo presionas → wallet de Stellar. Sin seed phrases. Sin entender crypto.</p>
+        <div class="two-columns" style="margin-top: 50px;">
+            <div>
+                <h3 style="color: #667eea; font-size: 1.5rem; margin-bottom: 20px;">Para Usuarios</h3>
+                <p>Login con Google, wallet instantánea.<br><span class="highlight">Ya funciona. Pruébalo hoy.</span></p>
+            </div>
+            <div>
+                <h3 style="color: #667eea; font-size: 1.5rem; margin-bottom: 20px;">Para AI Agents</h3>
+                <p>Tu agente con su propia wallet en Stellar.<br><span class="highlight">No code, just ship.</span></p>
+            </div>
+        </div>
+        <span class="slide-number">2 / 9</span>
+    </div>
+
+    <!-- Slide 4: Technical Foundation -->
+    <div class="slide">
+        <span class="logo">Accesly</span>
+        <h2>Technical Foundation</h2>
+        <p>100% Stellar-native</p>
+        <div style="margin-top: 40px;">
+            <span class="tech-box">SEP-10 Auth</span>
+            <span class="tech-box">SEP-30 Recovery</span>
+            <span class="tech-box">Shamir Secret Sharing</span>
+            <span class="tech-box">TEE (Trusted Execution)</span>
+        </div>
+        <ul style="margin-top: 50px;">
+            <li>El usuario <span class="highlight">nunca toca</span> una llave privada</li>
+            <li>Pero <span class="highlight">nunca pierde control</span> de su cuenta</li>
+            <li>Non-custodial con seguridad de grado bancario</li>
+        </ul>
+        <span class="slide-number">3 / 9</span>
+    </div>
+
+    <!-- Slide 5: Ecosystem Impact -->
+    <div class="slide">
+        <span class="logo">Accesly</span>
+        <h2>Ecosystem Impact</h2>
+        <ul>
+            <li>Reduce fricción de onboarding → <span class="highlight">más usuarios en Stellar</span></li>
+            <li>Habilita AI Agents en Stellar — <span class="highlight">nadie más lo hace</span></li>
+            <li>SDK open source en npm → otros proyectos pueden integrarlo</li>
+            <li><span class="highlight">5 equipos</span> ya integrando = efecto red</li>
+        </ul>
+        <p style="margin-top: 50px; font-size: 1.5rem; color: #888;">Cada wallet creada con Accesly es un usuario nuevo en el ecosistema Stellar.</p>
+        <span class="slide-number">4 / 9</span>
+    </div>
+
+    <!-- Slide 6: Roadmap -->
+    <div class="slide">
+        <span class="logo">Accesly</span>
+        <h2>Roadmap Q2 2026</h2>
+        <div class="roadmap-item">
+            <h3>Abril</h3>
+            <p>10 integraciones activas • SDK v2 con multi-wallet</p>
+        </div>
+        <div class="roadmap-item">
+            <h3>Mayo</h3>
+            <p>Dashboard para devs • Analytics de onboarding</p>
+        </div>
+        <div class="roadmap-item">
+            <h3>Junio</h3>
+            <p>1,000 wallets creadas • Grant SCF cerrado</p>
+        </div>
+        <span class="slide-number">5 / 9</span>
+    </div>
+
+    <!-- Slide 7: Team -->
+    <div class="slide">
+        <span class="logo">Accesly</span>
+        <h2>El Equipo</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <h3>Vianey</h3>
+                <p>Estrategia de producto</p>
+                <p style="margin-top: 10px; font-size: 1rem;">Deloitte • Unilever</p>
+            </div>
+            <div class="team-member">
+                <h3>Daniel</h3>
+                <p>Ciberseguridad</p>
+                <p style="margin-top: 10px; font-size: 1rem;">Pentesting • Poder Judicial</p>
+            </div>
+            <div class="team-member">
+                <h3>José Román</h3>
+                <p>Líder Técnico</p>
+                <p style="margin-top: 10px; font-size: 1rem;">Frutero • AI Expert</p>
+            </div>
+        </div>
+        <span class="slide-number">6 / 9</span>
+    </div>
+
+    <!-- Slide 8: Traction -->
+    <div class="slide">
+        <span class="logo">Accesly</span>
+        <h2>Tracción</h2>
+        <ul>
+            <li>SDK publicado en <span class="highlight">npm</span></li>
+            <li><span class="highlight">5 equipos</span> integrándolo</li>
+            <li>Producto funcional — <span class="highlight">pruébalo hoy</span></li>
+        </ul>
+        <div class="cta-box">
+            <p><strong>accesly.vercel.app</strong></p>
+            <p style="font-size: 1.2rem; margin-top: 10px;">npm i accesly</p>
+        </div>
+        <span class="slide-number">7 / 9</span>
+    </div>
+
+    <!-- Slide 9: Ask -->
+    <div class="slide">
+        <span class="logo">Accesly</span>
+        <h2>Lo que buscamos</h2>
+        <ul>
+            <li>Proyectos que quieran <span class="highlight">integrarnos</span></li>
+            <li>Feedback del ecosistema</li>
+            <li>Apoyo de <span class="highlight">SCF</span> para escalar en Q2</li>
+        </ul>
+        <p style="margin-top: 50px; font-size: 1.5rem; color: #888;">Si están construyendo en Stellar y necesitan onboarding sin fricción — para humanos o para agentes — hablemos.</p>
+        <span class="slide-number">8 / 9</span>
+    </div>
+
+    <!-- Slide 10: Close -->
+    <div class="slide center-slide">
+        <p style="font-size: 2rem; color: #888; margin-bottom: 30px;">Porque ese periodista no necesita entender blockchain.</p>
+        <p style="font-size: 2.5rem; margin-bottom: 60px;">Solo necesita acceder a su dinero.</p>
+        <h1>Somos Accesly</h1>
+        <span class="slide-number">9 / 9</span>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                showSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowLeft') {
+                showSlide(currentSlide - 1);
+            }
+        });
+        
+        // Touch support for mobile
+        let touchStartX = 0;
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+        document.addEventListener('touchend', (e) => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) showSlide(currentSlide + 1);
+                else showSlide(currentSlide - 1);
+            }
+        });
+        
+        // Click to advance
+        document.addEventListener('click', (e) => {
+            if (e.clientX > window.innerWidth / 2) {
+                showSlide(currentSlide + 1);
+            } else {
+                showSlide(currentSlide - 1);
+            }
+        });
+    </script>
+</body>
+</html>
