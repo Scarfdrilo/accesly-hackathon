@@ -2,11 +2,11 @@
 
 ## Resumen
 
-Arquitectura de wallets **non-custodial** usando MPC (Multi-Party Computation) donde **ninguna parte puede firmar transacciones sola**.
+Arquitectura de wallets **non-custodial** usando MPC (Multi-Party Computation) con esquema **2-of-3 Threshold** donde **Accesly nunca puede firmar transacciones sin la participación del usuario**.
 
 ---
 
-## 🔑 Distribución de Llaves (3-of-3 Threshold)
+## 🔑 Distribución de Llaves (2-of-3 Threshold)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -20,44 +20,88 @@ Arquitectura de wallets **non-custodial** usando MPC (Multi-Party Computation) d
 │  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘ │
 │           │                    │                    │          │
 │           │                    │                    │          │
-│      LocalStorage         Cifrado con           Backup         │
-│      / Secure             EMAIL + OTP           Offline        │
-│      Enclave              del usuario           Multi-región   │
+│      LocalStorage         Servidor             Cifrado con     │
+│      / Secure             Accesly              EMAIL + OTP     │
+│      Enclave              (plain)              del usuario     │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
+## 🔐 Combinaciones de Firma
+
+| Combinación | ¿Puede firmar? | Caso de uso |
+|-------------|----------------|-------------|
+| **Share 1 + Share 2** | ✅ SÍ (sin OTP) | Operación normal |
+| **Share 1 + Share 3** | ✅ SÍ (con OTP) | Recovery si servidor cae |
+| **Share 2 + Share 3** | ❌ NO | Accesly no puede firmar solo |
+
+---
+
 ## 🛡️ Por Qué Es Non-Custodial
 
-### Share 2 (Servidor Accesly) - El Detalle Clave
+### La Regla Clave
 
-| Aspecto | Implementación |
-|---------|----------------|
-| **Cifrado** | La llave del servidor está cifrada con el **email del usuario** |
-| **Acceso** | Solo se puede descifrar cuando el usuario confirma **OTP** |
-| **Control** | Accesly **NO puede usar** esta llave sin la participación activa del usuario |
-
-### Flujo de Firma
-
-```
-1. Usuario inicia transacción en su dispositivo
-2. App solicita OTP al email del usuario
-3. Usuario ingresa OTP
-4. Servidor descifra Share 2 usando email + OTP validado
-5. Se genera firma MPC combinando Share 1 + Share 2
-6. Transacción firmada se envía a Stellar
-```
+> **Share 2 (servidor) + Share 3 (recovery) NO pueden firmar juntos**
+> 
+> Aunque Accesly tiene Share 2 y almacena Share 3, **Share 3 está cifrado con el email del usuario y requiere OTP para descifrarse**.
+> 
+> Esto significa: **Accesly NUNCA puede actuar sin la participación del usuario.**
 
 ### Implicaciones Legales
 
 | Modelo | ¿Accesly tiene control? | Regulación |
 |--------|------------------------|------------|
 | **Custodial** (antes) | ✅ Sí, tiene las llaves | Requiere licencias, KYC/AML |
-| **Non-Custodial** (ahora) | ❌ No, necesita OTP del usuario | Sin requisitos custodiales |
+| **Non-Custodial** (ahora) | ❌ No, necesita al usuario | Sin requisitos custodiales |
 
 > **Resultado:** Accesly es un **proveedor de infraestructura**, no un custodio. Esto elimina barreras regulatorias.
+
+---
+
+## 🔄 Flujo de Firma Normal (Sin OTP)
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│ FIRMA NORMAL: Share 1 (dispositivo) + Share 2 (servidor)        │
+├──────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  1. Usuario abre la app y está logueado                         │
+│  2. Usuario inicia transacción (ej: enviar 100 USDC)            │
+│  3. App envía request al servidor Accesly                       │
+│  4. MPC signing combina Share 1 + Share 2                       │
+│  5. TX firmada se envía a Stellar                               │
+│                                                                  │
+│  ⚡ Flujo rápido, sin fricción, sin OTP                         │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🔄 Flujo de Recovery (Con OTP)
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│ RECOVERY: Share 1 (nuevo dispositivo) + Share 3 (recovery)      │
+├──────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  Escenario: Usuario perdió su dispositivo o quiere migrar       │
+│                                                                  │
+│  1. Usuario hace login con Google en nuevo dispositivo          │
+│  2. Sistema detecta que no hay Share 1 local                    │
+│  3. Usuario solicita recovery                                   │
+│  4. Sistema envía OTP al email del usuario                      │
+│  5. Usuario ingresa OTP                                         │
+│  6. Share 3 se descifra usando email + OTP                      │
+│  7. Se genera nuevo Share 1 para el dispositivo                 │
+│  8. Usuario puede operar normalmente                            │
+│                                                                  │
+│  🔐 OTP requerido porque Share 3 está cifrado con el email     │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -80,27 +124,26 @@ Arquitectura de wallets **non-custodial** usando MPC (Multi-Party Computation) d
 │  MPC Protocol genera 3 shares:                                   │
 │                                                                  │
 │  Share 1 ──► Almacenado en dispositivo (localStorage/enclave)   │
-│  Share 2 ──► Cifrado con email, almacenado en servidor Accesly  │
-│  Share 3 ──► Cifrado, backup en storage distribuido             │
+│  Share 2 ──► Almacenado en servidor Accesly (plain)             │
+│  Share 3 ──► Cifrado con email, almacenado en servidor/backup   │
 │                                                                  │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│ 3. FIRMAR TRANSACCIÓN                                            │
+│ 3. FIRMAR TRANSACCIÓN (Operación Normal)                         │
 ├──────────────────────────────────────────────────────────────────┤
 │                                                                  │
 │  Usuario quiere enviar 100 USDC                                  │
 │                                                                  │
 │  ┌─────────────────────────────────────────────────────────────┐ │
 │  │ a) App genera TX unsigned                                   │ │
-│  │ b) Servidor envía OTP al email del usuario                  │ │
-│  │ c) Usuario ingresa OTP en la app                            │ │
-│  │ d) Servidor valida OTP y descifra Share 2                   │ │
-│  │ e) MPC signing: Share 1 (device) + Share 2 (server)         │ │
-│  │ f) TX firmada se envía a Stellar                            │ │
+│  │ b) App envía request con Share 1 al servidor                │ │
+│  │ c) Servidor usa Share 2 para completar firma MPC            │ │
+│  │ d) TX firmada se envía a Stellar                            │ │
 │  └─────────────────────────────────────────────────────────────┘ │
 │                                                                  │
+│  ⚡ Sin OTP - flujo rápido y sin fricción                       │
 │  ⚠️  En ningún momento se reconstruye la llave completa         │
 │                                                                  │
 └──────────────────────────────────────────────────────────────────┘

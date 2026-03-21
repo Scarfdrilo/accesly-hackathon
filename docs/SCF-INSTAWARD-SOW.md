@@ -32,11 +32,11 @@ Los SDKs de wallets actuales en Stellar (incluyendo versiones anteriores de Acce
 
 ### Objective of This Instaward
 
-> Al final de 30 días, Accesly tendrá una **arquitectura non-custodial funcional usando MPC (Multi-Party Computation)** donde:
+> Al final de 30 días, Accesly tendrá una **arquitectura non-custodial funcional usando MPC (Multi-Party Computation) con esquema 2-of-3** donde:
 > 1. Las llaves se dividen en 3 shares
-> 2. El share del servidor está **cifrado con el email del usuario**
-> 3. Solo se puede usar cuando el usuario **confirma un OTP**
-> 4. **Ninguna parte puede firmar transacciones sola**
+> 2. **Share 1 (dispositivo) + Share 2 (servidor)** pueden firmar sin OTP (operación normal)
+> 3. **Share 3 (recovery)** está cifrado con el email del usuario y requiere OTP para recuperación
+> 4. **Share 2 + Share 3 NO pueden firmar juntos** → Accesly nunca puede actuar solo
 
 Esto elimina la clasificación de custodio y las barreras regulatorias asociadas.
 
@@ -48,9 +48,9 @@ Esto elimina la clasificación de custodio y las barreras regulatorias asociadas
 
 | # | Deliverable | Descripción | Por qué importa |
 |---|-------------|-------------|-----------------|
-| 1 | **MPC Key Generation con cifrado por email** | Sistema donde el key se divide en 3 shares. Share 2 (servidor) está cifrado con el email del usuario y solo se descifra al confirmar OTP | Ninguna parte puede firmar sola = non-custodial. Accesly no puede acceder a fondos sin participación activa del usuario |
+| 1 | **MPC Key Generation 2-of-3** | Sistema donde el key se divide en 3 shares. Share 1+2 firman sin OTP (operación normal). Share 3 cifrado con email para recovery (requiere OTP). Share 2+3 NO pueden firmar juntos | Accesly nunca puede actuar sin el usuario = non-custodial |
 | 2 | **Smart Account en Soroban (Testnet)** | Contrato inteligente en Stellar testnet que valida firmas generadas por MPC | Prueba técnica on-chain de que la arquitectura funciona |
-| 3 | **Demo End-to-End con Video** | Flujo completo: Google login → OTP al email → TX firmada en testnet | Evidencia visual verificable del concepto funcionando |
+| 3 | **Demo End-to-End con Video** | Flujo completo: Google login → TX firmada sin OTP (normal) + flujo recovery con OTP | Evidencia visual verificable del concepto funcionando |
 
 ### Out of Scope (Explícitamente NO incluido)
 
