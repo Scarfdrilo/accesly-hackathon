@@ -24,11 +24,11 @@
 
 ### Problem Being Addressed
 
-Los SDKs de wallets actuales en Stellar (incluyendo versiones anteriores de Accesly) son **custodiales**: el proveedor del servicio tiene control sobre las llaves privadas de los usuarios. Esto implica:
+Web3's security model puts all responsibility on the user — and users fail.
 
-- **Obligaciones regulatorias costosas** (licencias de custodia, KYC/AML obligatorio)
-- **Riesgo de seguridad centralizado** (si el servidor se compromete, todos los fondos están en riesgo)
-- **Barrera para escalar** (cada jurisdicción tiene diferentes requisitos)
+- **$1.7B lost in H1 2025** to private key and seed phrase compromises — **69% of all crypto stolen** (CertiK, H1 2025 Web3 Security Report)
+- **2.3 to 3.7 million Bitcoin permanently lost** to misplaced seed phrases (Ledger, 2025)
+- **Developers spend months** reinventing authentication and key management instead of shipping their product
 
 ### Objective of This Instaward
 
