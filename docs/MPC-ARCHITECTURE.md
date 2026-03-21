@@ -163,15 +163,17 @@ Arquitectura de wallets **non-custodial** usando MPC (Multi-Party Computation) c
 
 ---
 
-## 📋 Deliverables para Instaward (30 días)
+## 📋 Deliverables para Instaward (10 días)
 
-| # | Deliverable | Descripción | Evidencia |
-|---|-------------|-------------|-----------|
-| 1 | **MPC Key Generation** | Sistema 3-of-3 con Share 2 cifrado por email+OTP | Repo + documentación técnica |
-| 2 | **Smart Account (Soroban)** | Contrato testnet que valida firmas MPC | Contract address + TX hash |
-| 3 | **Demo E2E** | Video: Google login → OTP → TX firmada | Video 3 min + link testnet |
+| Día | Deliverable | Descripción | Evidencia |
+|-----|-------------|-------------|-----------|
+| 1-4 | **MPC Key Generation** | Biblioteca 2-of-3: Share 1+2 firman, Share 2+3 no | Repo + docs |
+| 5-8 | **Firma en Testnet** | TX firmada con Share 1 + Share 2 en Stellar testnet | TX hash |
+| 9-10 | **Demo + Docs** | Video corto + documentación técnica | Video 2 min |
 
 ### Out of Scope (Instaward 1)
+- Smart Contract Soroban complejo
+- Recovery flow completo con OTP
 - Bridge EVM↔Stellar
 - Fee Abstraction
 - UI de producción

@@ -32,10 +32,10 @@ Los SDKs de wallets actuales en Stellar (incluyendo versiones anteriores de Acce
 
 ### Objective of This Instaward
 
-> Al final de 30 días, Accesly tendrá una **arquitectura non-custodial funcional usando MPC (Multi-Party Computation) con esquema 2-of-3** donde:
-> 1. Las llaves se dividen en 3 shares
-> 2. **Share 1 (dispositivo) + Share 2 (servidor)** pueden firmar sin OTP (operación normal)
-> 3. **Share 3 (recovery)** está cifrado con el email del usuario y requiere OTP para recuperación
+> Al final de **10 días**, Accesly tendrá un **prototipo funcional de MPC 2-of-3 non-custodial** que demuestre:
+> 1. Generación de 3 shares (dispositivo, servidor, recovery)
+> 2. **Share 1 + Share 2** firman transacciones sin OTP (operación normal)
+> 3. **Share 3** cifrado con email del usuario (para recovery, requiere OTP)
 > 4. **Share 2 + Share 3 NO pueden firmar juntos** → Accesly nunca puede actuar solo
 
 Esto elimina la clasificación de custodio y las barreras regulatorias asociadas.
@@ -48,9 +48,9 @@ Esto elimina la clasificación de custodio y las barreras regulatorias asociadas
 
 | # | Deliverable | Descripción | Por qué importa |
 |---|-------------|-------------|-----------------|
-| 1 | **MPC Key Generation 2-of-3** | Sistema donde el key se divide en 3 shares. Share 1+2 firman sin OTP (operación normal). Share 3 cifrado con email para recovery (requiere OTP). Share 2+3 NO pueden firmar juntos | Accesly nunca puede actuar sin el usuario = non-custodial |
-| 2 | **Smart Account en Soroban (Testnet)** | Contrato inteligente en Stellar testnet que valida firmas generadas por MPC | Prueba técnica on-chain de que la arquitectura funciona |
-| 3 | **Demo End-to-End con Video** | Flujo completo: Google login → TX firmada sin OTP (normal) + flujo recovery con OTP | Evidencia visual verificable del concepto funcionando |
+| 1 | **MPC Key Generation 2-of-3** | Biblioteca que genera 3 shares con esquema 2-of-3. Share 1+2 firman sin OTP. Share 3 cifrado con email. Share 2+3 NO pueden firmar juntos | Accesly nunca puede actuar sin el usuario = non-custodial |
+| 2 | **Firma funcional en Testnet** | Share 1 + Share 2 firman transacción real en Stellar testnet | Prueba técnica de que la arquitectura funciona |
+| 3 | **Demo + Documentación** | Video corto del flujo + documentación técnica del sistema | Evidencia visual verificable del concepto |
 
 ### Out of Scope (Explícitamente NO incluido)
 
@@ -65,23 +65,23 @@ Esto elimina la clasificación de custodio y las barreras regulatorias asociadas
 
 | Monto Solicitado | Justificación |
 |------------------|---------------|
-| **$5,000 USD** | ~120 horas de desarrollo técnico distribuidas en: |
-| | • Investigación e implementación MPC (~50 hrs) |
-| | • Smart Contract Soroban (~30 hrs) |
-| | • Integración OTP + cifrado por email (~25 hrs) |
-| | • Testing, documentación y demo (~15 hrs) |
-| | • Infraestructura testnet |
+| **$2,000 USD** | ~40 horas de desarrollo técnico distribuidas en: |
+| | • Research + setup MPC library (~10 hrs) |
+| | • Implementación key generation (~12 hrs) |
+| | • Integración firma + testnet (~12 hrs) |
+| | • Testing, demo y documentación (~6 hrs) |
 
 ---
 
-## 5. 30-Day Execution Plan & Timeline
+## 5. 10-Day Execution Plan & Timeline
 
-| Semana | Trabajo Planeado | Output Esperado |
-|--------|------------------|-----------------|
-| **Week 1** | Investigación MPC libraries, setup proyecto, definir esquema de cifrado | Documento técnico de arquitectura, repo configurado |
-| **Week 2** | Implementar MPC key generation, cifrado Share 2 con email | Código funcionando en local, tests unitarios |
-| **Week 3** | Smart Contract Soroban, integración OTP, conexión frontend | Contrato desplegado en testnet, flujo E2E funcionando |
-| **Week 4** | Testing completo, fix bugs, grabar demo, documentación | Video demo, documentación final, evidencia lista |
+| Día | Trabajo Planeado | Output Esperado |
+|-----|------------------|-----------------|
+| **1-2** | Setup proyecto, research MPC libraries (lit-protocol, @aspect-fi) | Repo configurado, library seleccionada |
+| **3-4** | Implementar MPC key generation 3 shares | Código generando shares correctamente |
+| **5-6** | Integrar firma con Share 1 + Share 2 | Firma MPC funcionando en local |
+| **7-8** | Conectar a Stellar testnet, testing | TX firmada en testnet |
+| **9-10** | Grabar demo, escribir documentación | Video demo + docs técnicos listos |
 
 ---
 
@@ -91,9 +91,9 @@ Esto elimina la clasificación de custodio y las barreras regulatorias asociadas
 
 | Deliverable | Tipo de Evidencia | Descripción |
 |-------------|-------------------|-------------|
-| MPC Key Generation | **Repo + Docs** | Link a GitHub con código y README explicando el flujo de cifrado |
-| Smart Account Soroban | **Contract + TX Hash** | Link al contrato en testnet + hash de transacción de ejemplo |
-| Demo E2E | **Video 3 min** | Walkthrough completo: login → OTP → firma → TX confirmada |
+| MPC Key Generation | **Repo + Docs** | Link a GitHub con código y README explicando el esquema 2-of-3 |
+| Firma en Testnet | **TX Hash** | Hash de transacción firmada con MPC en Stellar testnet |
+| Demo + Docs | **Video 2 min + MD** | Video corto del flujo + documentación técnica |
 
 ---
 
@@ -114,7 +114,7 @@ Después de este Instaward, el siguiente paso más probable es:
 
 ## 8. Instawards Constraints Acknowledgement
 
-- ☐ Este scope se completará en **30 días o menos**
+- ☐ Este scope se completará en **10 días**
 - ☐ Instawards apoyan **ejecución**, no exploración abierta
 - ☐ Un proyecto puede recibir máximo **2 follow-on Instawards**
 - ☐ Cada Instaward está limitado a **$5,000**
