@@ -32,7 +32,7 @@ Los SDKs de wallets actuales en Stellar (incluyendo versiones anteriores de Acce
 
 ### Objective of This Instaward
 
-> Al final de **10 días**, Accesly tendrá un **prototipo funcional de MPC 2-of-3 non-custodial** que demuestre:
+> Al final de **30 días**, Accesly tendrá un **prototipo funcional de MPC 2-of-3 non-custodial** que demuestre:
 > 1. Generación de 3 shares (dispositivo, servidor, recovery)
 > 2. **Share 1 + Share 2** firman transacciones sin OTP (operación normal)
 > 3. **Share 3** cifrado con email del usuario (para recovery, requiere OTP)
@@ -65,23 +65,22 @@ Esto elimina la clasificación de custodio y las barreras regulatorias asociadas
 
 | Monto Solicitado | Justificación |
 |------------------|---------------|
-| **$2,000 USD** | ~40 horas de desarrollo técnico distribuidas en: |
-| | • Research + setup MPC library (~10 hrs) |
-| | • Implementación key generation (~12 hrs) |
-| | • Integración firma + testnet (~12 hrs) |
-| | • Testing, demo y documentación (~6 hrs) |
+| **$5,000 USD** | ~100 horas de desarrollo técnico distribuidas en: |
+| | • Research + setup MPC library (~20 hrs) |
+| | • Implementación key generation + cifrado (~30 hrs) |
+| | • Integración firma + testnet (~30 hrs) |
+| | • Testing, demo y documentación (~20 hrs) |
 
 ---
 
-## 5. 10-Day Execution Plan & Timeline
+## 5. 30-Day Execution Plan & Timeline
 
-| Día | Trabajo Planeado | Output Esperado |
-|-----|------------------|-----------------|
-| **1-2** | Setup proyecto, research MPC libraries (lit-protocol, @aspect-fi) | Repo configurado, library seleccionada |
-| **3-4** | Implementar MPC key generation 3 shares | Código generando shares correctamente |
-| **5-6** | Integrar firma con Share 1 + Share 2 | Firma MPC funcionando en local |
-| **7-8** | Conectar a Stellar testnet, testing | TX firmada en testnet |
-| **9-10** | Grabar demo, escribir documentación | Video demo + docs técnicos listos |
+| Semana | Trabajo Planeado | Output Esperado |
+|--------|------------------|-----------------|
+| **Week 1** | Setup proyecto, research MPC libraries (lit-protocol, @aspect-fi), definir arquitectura | Repo configurado, library seleccionada, docs de arquitectura |
+| **Week 2** | Implementar MPC key generation 3 shares, cifrado Share 3 con email | Código generando shares correctamente, tests unitarios |
+| **Week 3** | Integrar firma Share 1 + Share 2, conectar a Stellar testnet | TX firmada en testnet, flujo funcionando |
+| **Week 4** | Testing completo, fix bugs, grabar demo, documentación final | Video demo + docs técnicos + evidencia lista |
 
 ---
 
@@ -114,7 +113,7 @@ Después de este Instaward, el siguiente paso más probable es:
 
 ## 8. Instawards Constraints Acknowledgement
 
-- ☐ Este scope se completará en **10 días**
+- ☐ Este scope se completará en **30 días o menos**
 - ☐ Instawards apoyan **ejecución**, no exploración abierta
 - ☐ Un proyecto puede recibir máximo **2 follow-on Instawards**
 - ☐ Cada Instaward está limitado a **$5,000**
