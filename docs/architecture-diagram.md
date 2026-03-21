@@ -579,3 +579,23 @@ Security: Trustless (zero-knowledge cryptography)
 | **Stellar Native** | 5-second finality, $0.00001 transactions, Soroban smart contracts. |
 | **ZK Bridge** | Trustless Ethereum to Stellar bridge using Noir zero-knowledge proofs. No validators, pure cryptography. |
 | **Multichain Liquidity** | Bridge assets from Ethereum, access Stellar DeFi, all in one wallet. |
+
+---
+
+## ⚠️ Consideraciones Pendientes
+
+### 🔄 Problema de Doble KYC
+
+**Issue:** Riesgo de requerir doble autenticación KYC:
+1. **Offramp** - KYC para convertir crypto → fiat
+2. **CETES (Etherfuse)** - KYC separado para inversión en bonos mexicanos
+
+**Impacto:** Mala UX, fricción para el usuario, posible abandono.
+
+**A resolver:**
+- [ ] Investigar si Etherfuse acepta KYC delegado
+- [ ] Evaluar proveedores de offramp que compartan KYC con Etherfuse
+- [ ] Considerar KYC unificado (un solo proceso, múltiples servicios)
+- [ ] Revisar requisitos regulatorios de cada servicio
+
+**Prioridad:** Alta - Afecta directamente la experiencia del usuario.
