@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Capture slides from HTML pitch deck as images
+Capture slides from HTML pitch deck as HIGH RESOLUTION images
 """
 import os
 from playwright.sync_api import sync_playwright
@@ -13,29 +13,33 @@ def capture_slides():
     
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        page = browser.new_page(viewport={'width': 1920, 'height': 1080})
+        # HIGH RES: 3840x2160 (4K) with 2x device scale
+        page = browser.new_page(
+            viewport={'width': 1920, 'height': 1080},
+            device_scale_factor=3  # 3x resolution for crisp graphics
+        )
         
         # Load the HTML file
         page.goto(f'file://{os.path.abspath(HTML_PATH)}')
-        page.wait_for_timeout(1000)
+        page.wait_for_timeout(1500)
         
         # Get total slides
         total = page.evaluate('document.querySelectorAll(".s").length')
-        print(f"Found {total} slides")
+        print(f"Found {total} slides - capturing at 3x resolution")
         
         for i in range(total):
             # Navigate to slide
             page.evaluate(f'goTo({i})')
-            page.wait_for_timeout(500)  # Wait for animations
+            page.wait_for_timeout(800)  # Wait for animations
             
-            # Screenshot
+            # Screenshot at high quality
             output_path = os.path.join(OUTPUT_DIR, f'slide_{i+1}.png')
-            page.screenshot(path=output_path)
-            print(f"✅ Captured slide {i+1}")
+            page.screenshot(path=output_path, type='png')
+            print(f"✅ Captured slide {i+1} (3x res)")
         
         browser.close()
     
-    print(f"\n📁 Slides saved to: {OUTPUT_DIR}")
+    print(f"\n📁 HD Slides saved to: {OUTPUT_DIR}")
     return OUTPUT_DIR
 
 if __name__ == "__main__":
